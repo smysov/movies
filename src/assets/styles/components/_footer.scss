@@ -1,0 +1,22 @@
+.footer {
+  padding: 15px 0;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6);
+  background: $ligth-pink;
+  color: #fff;
+  flex: 0 0 auto;
+
+  &__description {
+    font-weight: 500;
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 10px;
+
+    @include phone {
+      font-size: 16px;
+    }
+
+    @include tablets {
+      font-size: 18px;
+    }
+  }
+}
