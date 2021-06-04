@@ -7,7 +7,7 @@ class Main extends Component {
     super();
     this.state = {
       searchQuery: '',
-      movies: null,
+      movies: [],
       isSearching: false,
     };
   }
@@ -18,6 +18,8 @@ class Main extends Component {
 
   searchMovies = async (e, searchQuery) => {
     e.preventDefault();
+
+    if (!searchQuery) return;
 
     try {
       this.setState({ isSearching: true });
