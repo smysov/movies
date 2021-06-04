@@ -1,30 +1,18 @@
-import React, { Component } from 'react';
 import SearchInput from './form/SearchInput';
 import SubmitButton from './form/SubmitButton';
 
-class Form extends Component {
-  constructor() {
-    super();
-    this.state = {
-      searchQuery: '',
-    };
-  }
+function Form(props) {
+  const { searchQuery, handleChange, searchMovies } = props;
 
-  onSubmit(e) {
-    e.preventDefault();
-  }
-
-  handleChange = (event) => {
-    this.setState({ searchQuery: event.target.value });
-  };
-
-  render() {
-    return (
-      <form className="search" onSubmit={this.onSubmit}>
-        <SearchInput searchQuery={this.state.searchQuery} handleChange={this.handleChange} />
-        <SubmitButton />
-      </form>
-    );
-  }
+  return (
+    <section className='search-movies'>
+      <div className='container'>
+        <form className='search' onSubmit={(e) => searchMovies(e, searchQuery)}>
+          <SearchInput searchQuery={searchQuery} handleChange={handleChange} />
+          <SubmitButton />
+        </form>
+      </div>
+    </section>
+  );
 }
 export default Form;
