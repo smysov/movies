@@ -1,0 +1,52 @@
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+
+    &_flex {
+      @include phone {
+        flex: 0 1 300px;
+      }
+    }
+  }
+
+  &__subtitle {
+    font-weight: 700;
+  }
+
+  &__input {
+    font-size: 16px;
+    padding: 7px 10px;
+    border: 2px solid $light-pink;
+    outline: none;
+    border-radius: 7px 0 0 7px;
+    transition: border-color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  &__button {
+    font-size: 14px;
+    font-weight: 700;
+    padding: 8px 10px;
+    border: 2px solid $light-pink;
+    border-radius: 0 7px 7px 0;
+    outline: none;
+    color: #fff;
+    background: $light-pink;
+    transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    &:focus {
+      background: $green;
+      border-color: $green;
+    }
+
+    &:hover {
+      background: $light-green;
+      border-color: $light-green;
+    }
+  }
+}
