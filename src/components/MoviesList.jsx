@@ -11,9 +11,9 @@ function MoviesList(props) {
         ) : (
           <ul className='movies'>
             {movies ? (
-              <MoviesItem movies={movies} />
+              movies.map((movie) => <MoviesItem key={movie.imdbID} {...movie} />)
             ) : (
-              <h3 className='movies__not-found'>Movies not found</h3>
+              <h3 className='movies__not-found'>Movies not found!</h3>
             )}
           </ul>
         )}

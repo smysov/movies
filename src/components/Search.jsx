@@ -1,5 +1,5 @@
-import SearchInput from './form/SearchInput';
-import SubmitButton from './form/SubmitButton';
+import SearchInput from './search/SearchInput';
+import SubmitButton from './search/SubmitButton';
 
 function Form(props) {
   const { searchQuery, handleChange, searchMovies } = props;
