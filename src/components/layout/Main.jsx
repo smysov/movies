@@ -68,7 +68,7 @@ class Main extends Component {
           resolve();
         }, 3000);
       });
-      this.setState({ movies: movie.Search || [] });
+      this.setState({ movies: movie.Search });
     } catch (error) {
       console.log(error);
     } finally {
@@ -77,10 +77,12 @@ class Main extends Component {
   };
 
   componentDidMount() {
+    this.setState({ isSearching: true });
     fetch('https://www.omdbapi.com/?apikey=d39f466e&s=matrix')
       .then((response) => response.json())
       .then((data) => this.setState({ movies: data.Search }))
-      .catch((e) => console.log(e));
+      .catch((e) => console.log(e))
+      .finally(() => this.setState({ isSearching: false }));
   }
 
   render() {
