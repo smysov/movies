@@ -68,13 +68,21 @@ class Main extends Component {
           resolve();
         }, 3000);
       });
-      this.setState({ movies: movie.Search });
+      this.setState({ movies: movie.Search || [] });
     } catch (error) {
       console.log(error);
     } finally {
       this.setState({ isSearching: false });
     }
   };
+
+  componentDidMount() {
+    fetch('http://www.omdbapi.com/?apikey=d39f466e&s=matrix')
+      .then((response) => response.json())
+      .then((data) => this.setState({ movies: data.Search }))
+      .catch((e) => console.log(e));
+  }
+
   render() {
     const { searchMovies, handleChange, handleRadio } = this;
     const { searchQuery, types, type, movies, isSearching } = this.state;
@@ -82,7 +90,9 @@ class Main extends Component {
     return (
       <main className='main-content'>
         <Search searchQuery={searchQuery} searchMovies={searchMovies} handleChange={handleChange} />
-        {movies.length ? <Categories types={types} type={type} handleRadio={handleRadio} /> : null}
+        {movies.length && searchQuery.length >= 4 ? (
+          <Categories types={types} type={type} handleRadio={handleRadio} />
+        ) : null}
         <MoviesList movies={movies} isSearching={isSearching} />
       </main>
     );

@@ -18,10 +18,10 @@
 
 body {
   @include font();
-  line-height: 1.42;
   margin: 0;
   padding: 0;
   height: 100%;
+  color: #fff;
   background-image: linear-gradient(105.0deg, #f3f7fa -20.00%, #6a10d4 80.00%, #ee0122 180.00%, #8c2899 280.00%);
 }
 
