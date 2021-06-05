@@ -1,6 +1,40 @@
-# Getting Started with Create React App
+<h1 align="center">React Movies App</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+
+<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/smysov/movies?style=plastic">
+
+<img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/smysov/movies?style=plastic">
+
+<img alt="GitHub closed pull requests" src="https://img.shields.io/github/issues-pr-closed/smysov/movies?style=plastic">
+
+<img alt="GitHub language count" src="https://img.shields.io/github/languages/count/smysov/movies?style=plastic">
+
+<img alt="GitHub all releases" src="https://img.shields.io/github/downloads/smysov/movies/total?style=plastic">
+
+<img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/smysov/movies?label=package.json&style=plastic">
+
+</p>
+
+<p align="center">
+
+<img  src="https://i.ibb.co/sQpfvdH/react-movies.png">
+
+</p>
+
+## Installation
+
+First you need to clone repository
+Before installing dependencies and running the project,
+make sure that you have the latest version of Node installed.js & **YARN**
+Install the dependencies and devDependencies and start the server.
+
+```
+$ git clone git@github.com:smysov/movies.git or https://github.com/smysov/movies.git
+$ cd movies
+$ yarn
+```
+# [View a demo](https://blissful-engelbart-6907b8.netlify.app/)
 
 ## Available Scripts
 
@@ -38,33 +72,3 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

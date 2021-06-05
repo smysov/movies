@@ -58,7 +58,7 @@ class Main extends Component {
     try {
       this.setState({ isSearching: true });
       const response = await fetch(
-        `http://www.omdbapi.com/?apikey=d39f466e&s=${searchQuery}${
+        `https://www.omdbapi.com/?apikey=d39f466e&s=${searchQuery}${
           type !== 'all' ? `&type=${type}` : ''
         }`,
       );
@@ -77,7 +77,7 @@ class Main extends Component {
   };
 
   componentDidMount() {
-    fetch('http://www.omdbapi.com/?apikey=d39f466e&s=matrix')
+    fetch('https://www.omdbapi.com/?apikey=d39f466e&s=matrix')
       .then((response) => response.json())
       .then((data) => this.setState({ movies: data.Search }))
       .catch((e) => console.log(e));
