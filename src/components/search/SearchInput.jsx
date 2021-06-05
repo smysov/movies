@@ -19,7 +19,7 @@ class SearchInput extends Component {
           </label>
           <input
             className='search__input'
-            name='search'
+            name='searchQuery'
             type='text'
             id='movie'
             onChange={this.props.handleChange}
