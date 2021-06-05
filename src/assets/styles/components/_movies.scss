@@ -37,7 +37,6 @@
   }
 
   &__title {
-    color: #fff;
     padding: 0 10px;
     text-align: center;
   }
@@ -55,5 +54,8 @@
 
   &__not-found {
     color: red;
+    background: rgba($color: #ffffff, $alpha: 0.5);
+    padding: 5px;
+    border-radius: 10px;
   }
 }

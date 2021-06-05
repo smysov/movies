@@ -17,18 +17,17 @@
 
   &__subtitle {
     font-weight: 700;
-    color: #fff;
   }
 
   &__input {
     font-size: 16px;
+    color: #fff;
     padding: 7px 10px;
     border: 2px solid #fff;
     outline: none;
     border-radius: 7px 0 0 7px;
     transition: border-color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
     background: transparent;
-    color: #fff;
   }
 
   &__button {

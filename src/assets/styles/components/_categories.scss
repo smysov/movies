@@ -15,30 +15,30 @@
   }
 
   &__subtitle {
-    color: #fff;
     position: relative;
     padding-left: 25px;
     cursor: pointer;
 
-    &::before {
+    &::before,
+    &::after {
       position: absolute;
       content: '';
+      border-radius: 50%;
+    }
+
+    &::before {
       top: -2px;
       left: 0;
       width: 20px;
       height: 20px;
       border: 2px solid #fff;
-      border-radius: 50%;
     }
 
     &::after {
-      position: absolute;
-      content: '';
       top: 50%;
       left: 5px;
       width: 10px;
       height: 10px;
-      border-radius: 50%;
       background: #fff;
       transform: translateY(-50%) scale(0);
       transition: .3s all ease-in;
