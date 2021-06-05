@@ -22,6 +22,7 @@
     transition: all 0.3s ease-in;
     border-radius: 20px;
     overflow: hidden;
+    cursor: pointer;
 
     &:hover {
       box-shadow: 0 0 27px 0 rgb(0, 0, 0 /10%);
@@ -36,16 +37,19 @@
   }
 
   &__title {
+    color: #fff;
     padding: 0 10px;
     text-align: center;
   }
 
   &__type {
+    color: #eeeeee;
     font-weight: 700;
     text-transform: uppercase;
   }
 
   &__year {
+    color: #cfcfcf;
     @extend .movies__type;
   }
 

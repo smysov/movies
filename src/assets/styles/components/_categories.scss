@@ -1,0 +1,51 @@
+.categories {
+  display: flex;
+  justify-content: space-between;
+
+  @include tablets {
+    justify-content: space-evenly;
+  }
+
+  &__radio {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+  }
+
+  &__subtitle {
+    color: #fff;
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+
+    &::before {
+      position: absolute;
+      content: '';
+      top: -2px;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #fff;
+      border-radius: 50%;
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      top: 50%;
+      left: 5px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #fff;
+      transform: translateY(-50%) scale(0);
+      transition: .3s all ease-in;
+    }
+  }
+
+  &__radio:checked + .categories__subtitle::after {
+    transform: translateY(-50%) scale(1);
+  }
+}

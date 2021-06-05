@@ -1,19 +1,23 @@
 function MoviesItem(props) {
-  const { movies } = props;
-  return !movies
-    ? null
-    : movies.map((movie) => (
-        <li className='movies__item' key={movie.imdbID}>
-          {movie.Poster === 'N/A' ? (
-            <img className='movies__image' src='no-image.png' alt='Poster' />
-          ) : (
-            <img className='movies__image' src={movie.Poster} alt='Poster' />
-          )}
-          <h2 className='movies__title'>{movie.Title}</h2>
-          <p className='movies__type'>{movie.Type}</p>
-          <span className='movies__year'>{movie.Year}</span>
-        </li>
-      ));
+  const {
+    Title: title,
+    Year: year,
+    imdbID: id,
+    Type: type,
+    Poster: poster,
+   } = props;
+  return (
+    <li className='movies__item' key={id}>
+      {poster === 'N/A' ? (
+        <img className='movies__image' src='no-image.png' alt='Poster' />
+      ) : (
+        <img className='movies__image' src={poster} alt='Poster' />
+      )}
+      <h2 className='movies__title'>{title}</h2>
+      <p className='movies__type'>{type}</p>
+      <span className='movies__year'>{year}</span>
+    </li>
+  );
 }
 
 export default MoviesItem;

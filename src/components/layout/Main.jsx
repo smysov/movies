@@ -1,6 +1,7 @@
 import { Component } from 'react';
-import Form from '../Form';
+import Search from '../Search';
 import MoviesList from '../MoviesList';
+import Categories from '../Categories';
 
 class Main extends Component {
   constructor() {
@@ -9,45 +10,80 @@ class Main extends Component {
       searchQuery: '',
       movies: [],
       isSearching: false,
+      type: 'all',
+      types: [
+        {
+          id: 'all',
+          for: 'all',
+          title: 'All',
+          name: 'type',
+          value: 'all',
+        },
+        {
+          id: 'movies',
+          for: 'movies',
+          title: 'Only movies',
+          name: 'type',
+          value: 'movie',
+        },
+        {
+          id: 'serials',
+          for: 'serials',
+          title: 'Only serials',
+          name: 'type',
+          value: 'series',
+        },
+      ],
     };
   }
 
   handleChange = (event) => {
-    this.setState({ searchQuery: event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
   };
 
-  searchMovies = async (e, searchQuery) => {
+  handleRadio = (event) => {
+    this.setState(
+      () => ({ type: event.target.value }),
+      () => {
+        this.searchMovies(event, this.state.searchQuery, this.state.type);
+      },
+    );
+  };
+
+  searchMovies = async (e, searchQuery, type = 'all') => {
     e.preventDefault();
 
     if (!searchQuery) return;
 
     try {
       this.setState({ isSearching: true });
-      const response = await fetch(`http://www.omdbapi.com/?apikey=d39f466e&s=${searchQuery}`);
+      const response = await fetch(
+        `http://www.omdbapi.com/?apikey=d39f466e&s=${searchQuery}${
+          type !== 'all' ? `&type=${type}` : ''
+        }`,
+      );
       const movie = await response.json();
       await new Promise((resolve) => {
         setTimeout(() => {
           resolve();
         }, 3000);
       });
-      this.setState({ movies: movie.Search, searchQuery: '' });
+      this.setState({ movies: movie.Search });
     } catch (error) {
       console.log(error);
     } finally {
       this.setState({ isSearching: false });
     }
   };
-
   render() {
+    const { searchMovies, handleChange, handleRadio } = this;
+    const { searchQuery, types, type, movies, isSearching } = this.state;
+
     return (
       <main className='main-content'>
-        <Form
-          searchQuery={this.state.searchQuery}
-          searchMovies={this.searchMovies}
-          handleChange={this.handleChange}
-        />
-
-        <MoviesList movies={this.state.movies} isSearching={this.state.isSearching} />
+        <Search searchQuery={searchQuery} searchMovies={searchMovies} handleChange={handleChange} />
+        {movies.length ? <Categories types={types} type={type} handleRadio={handleRadio} /> : null}
+        <MoviesList movies={movies} isSearching={isSearching} />
       </main>
     );
   }
