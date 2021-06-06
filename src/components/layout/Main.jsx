@@ -3,6 +3,8 @@ import Search from '../Search';
 import MoviesList from '../MoviesList';
 import Categories from '../Categories';
 
+const API_KEY = process.env.REACT_APP_API_KEY;
+
 function Main() {
   const [searchQuery, setSearchQuery] = useState('');
   const [movies, setMovies] = useState([]);
@@ -49,7 +51,7 @@ function Main() {
     try {
       setIsSearching(true);
       const response = await fetch(
-        `https://www.omdbapi.com/?apikey=d39f466e&s=${searchQuery}${
+        `https://www.omdbapi.com/?apikey=${API_KEY}&s=${searchQuery}${
           type !== 'all' ? `&type=${type}` : ''
         }`,
       );
@@ -69,7 +71,7 @@ function Main() {
 
   useEffect(() => {
     setIsSearching(true);
-    fetch('https://www.omdbapi.com/?apikey=d39f466e&s=matrix')
+    fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=matrix`)
       .then((response) => response.json())
       .then((data) => setMovies(data.Search))
       .catch((e) => console.log(e))
