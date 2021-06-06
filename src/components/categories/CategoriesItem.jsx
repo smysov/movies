@@ -1,6 +1,5 @@
-function CategoriesItem(props) {
-  const { types, handleRadio, type } = props;
-  return types.map((item) => (
+const CategoriesItem = ({ types, handleRadio, type }) =>
+  types.map((item) => (
     <div className='categories__group' key={item.id}>
       <input
         className='categories__radio'
@@ -16,6 +15,5 @@ function CategoriesItem(props) {
       </label>
     </div>
   ));
-}
 
 export default CategoriesItem;
