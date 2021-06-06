@@ -1,34 +1,28 @@
-import React, {Component} from 'react';
+import { useEffect, useRef } from 'react';
 
-class SearchInput extends Component {
-  constructor() {
-    super();
+const SearchInput = ({ searchQuery, handleChange }) => {
+  const input = useRef(null);
 
-    this.input = React.createRef();
-  }
+  useEffect(() => {
+    input.current.focus();
+  });
 
-  componentDidMount() {
-    this.input.current.focus();
-  }
-
-  render() {
-      return (
-        <div className='search__group search__group_flex'>
-          <label htmlFor='movie' className='search__subtitle'>
-            Search Movies or serials
-          </label>
-          <input
-            className='search__input'
-            name='searchQuery'
-            type='text'
-            id='movie'
-            onChange={this.props.handleChange}
-            value={this.props.searchQuery}
-            ref={this.input}
-          />
-        </div>
-      );
-  }
-}
+  return (
+    <div className='search__group search__group_flex'>
+      <label htmlFor='movie' className='search__subtitle'>
+        Search Movies or serials
+      </label>
+      <input
+        className='search__input'
+        name='searchQuery'
+        type='text'
+        id='movie'
+        onChange={handleChange}
+        value={searchQuery}
+        ref={input}
+      />
+    </div>
+  );
+};
 
 export default SearchInput;
