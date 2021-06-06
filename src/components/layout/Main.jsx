@@ -1,62 +1,53 @@
-import { Component } from 'react';
+import { useState, useEffect } from 'react';
 import Search from '../Search';
 import MoviesList from '../MoviesList';
 import Categories from '../Categories';
 
-class Main extends Component {
-  constructor() {
-    super();
-    this.state = {
-      searchQuery: '',
-      movies: [],
-      isSearching: false,
-      type: 'all',
-      types: [
-        {
-          id: 'all',
-          for: 'all',
-          title: 'All',
-          name: 'type',
-          value: 'all',
-        },
-        {
-          id: 'movies',
-          for: 'movies',
-          title: 'Only movies',
-          name: 'type',
-          value: 'movie',
-        },
-        {
-          id: 'serials',
-          for: 'serials',
-          title: 'Only serials',
-          name: 'type',
-          value: 'series',
-        },
-      ],
-    };
-  }
+function Main() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [movies, setMovies] = useState([]);
+  const [isSearching, setIsSearching] = useState(false);
+  const [type, setType] = useState('all');
+  const [types] = useState([
+    {
+      id: 'all',
+      for: 'all',
+      title: 'All',
+      name: 'type',
+      value: 'all',
+    },
+    {
+      id: 'movies',
+      for: 'movies',
+      title: 'Only movies',
+      name: 'type',
+      value: 'movie',
+    },
+    {
+      id: 'serials',
+      for: 'serials',
+      title: 'Only serials',
+      name: 'type',
+      value: 'series',
+    },
+  ]);
 
-  handleChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
+  const handleChange = (event) => {
+    setSearchQuery(event.target.value);
   };
 
-  handleRadio = (event) => {
-    this.setState(
-      () => ({ type: event.target.value }),
-      () => {
-        this.searchMovies(event, this.state.searchQuery, this.state.type);
-      },
-    );
+  const handleRadio = async (event) => {
+    setType(event.target.value);
+    searchMovies(event, searchQuery, event.target.value);
   };
 
-  searchMovies = async (e, searchQuery, type = 'all') => {
+  const searchMovies = async (e, searchQuery, type='all') => {
     e.preventDefault();
 
     if (!searchQuery) return;
 
     try {
-      this.setState({ isSearching: true });
+      setIsSearching(true);
       const response = await fetch(
         `https://www.omdbapi.com/?apikey=d39f466e&s=${searchQuery}${
           type !== 'all' ? `&type=${type}` : ''
@@ -68,37 +59,32 @@ class Main extends Component {
           resolve();
         }, 3000);
       });
-      this.setState({ movies: movie.Search });
+      setMovies(movie.Search);
     } catch (error) {
       console.log(error);
     } finally {
-      this.setState({ isSearching: false });
+      setIsSearching(false);
     }
   };
 
-  componentDidMount() {
-    this.setState({ isSearching: true });
+  useEffect(() => {
+    setIsSearching(true);
     fetch('https://www.omdbapi.com/?apikey=d39f466e&s=matrix')
       .then((response) => response.json())
-      .then((data) => this.setState({ movies: data.Search }))
+      .then((data) => setMovies(data.Search))
       .catch((e) => console.log(e))
-      .finally(() => this.setState({ isSearching: false }));
-  }
+      .finally(() => setIsSearching(false));
+  }, []);
 
-  render() {
-    const { searchMovies, handleChange, handleRadio } = this;
-    const { searchQuery, types, type, movies, isSearching } = this.state;
-
-    return (
-      <main className='main-content'>
-        <Search searchQuery={searchQuery} searchMovies={searchMovies} handleChange={handleChange} />
-        {movies.length && searchQuery.length >= 4 ? (
-          <Categories types={types} type={type} handleRadio={handleRadio} />
-        ) : null}
-        <MoviesList movies={movies} isSearching={isSearching} />
-      </main>
-    );
-  }
+  return (
+    <main className='main-content'>
+      <Search searchQuery={searchQuery} searchMovies={searchMovies} handleChange={handleChange} />
+      {movies && searchQuery.length >= 4 ? (
+        <Categories types={types} type={type} handleRadio={handleRadio} />
+      ) : null}
+      <MoviesList movies={movies} isSearching={isSearching} />
+    </main>
+  );
 }
 
 export default Main;
