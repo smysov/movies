@@ -1,16 +1,14 @@
-function Footer() {
-  return (
-    <footer className="footer">
-      <div className="container">
-        <div className="footer__inner">
-          <p className="footer__description">
-            <span className="footer__year">Copyright &copy; {new Date().getFullYear()}</span>
-            <span className="footer__author">smysov</span>
-          </p>
-        </div>
+const Footer = () => (
+  <footer className='footer'>
+    <div className='container'>
+      <div className='footer__inner'>
+        <p className='footer__description'>
+          <span className='footer__year'>Copyright &copy; {new Date().getFullYear()}</span>
+          <span className='footer__author'>smysov</span>
+        </p>
       </div>
-    </footer>
-  );
-}
+    </div>
+  </footer>
+);
 
 export default Footer;
